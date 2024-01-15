@@ -1,0 +1,5 @@
+#include <stdio.h>
+
+void hanoi(int nm char sursa, char  intermediar, char destinatie) {
+if (n==1) {
+std::cout << "Muta discul 1 de la tija "
