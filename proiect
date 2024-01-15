@@ -1,5 +1,12 @@
 #include <stdio.h>
-
-void hanoi(int nm char sursa, char  intermediar, char destinatie) {
+using namespace std;
+void hanoi(int n, char A, char C) {
 if (n==1) {
-std::cout << "Muta discul 1 de la tija "
+cout << "Muta discul 1 de la tija "<<A<<" pe tija"
+<<  C <<endl;
+return;
+}
+hanoi(n-1, A, C, B);
+cout<< "Muta discul " << n << " de pe tija " << A << " pe tija " << C << endl;
+hanoi(n-1, B, A, C);
+}
