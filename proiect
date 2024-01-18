@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h
 using namespace std;
 void hanoi(int n, char A, char C) {
 if (n==1) {
