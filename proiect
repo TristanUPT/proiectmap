@@ -12,7 +12,7 @@ hanoi(n-1, B, A, C);
 }
 int main() {
     int n = 3;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) 
         cout << "Pasul " << i + 1 << ":" << endl;
         hanoi(i + 1, 'A', 'B', 'C');
         cout << endl;
