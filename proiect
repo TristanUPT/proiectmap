@@ -12,7 +12,7 @@ hanoi(n-1, B, A, C);
 }
 int main() {
     int n = 3;
-int choice;
+int choice;//meniu
 do {
         cout << "Meniu:\n";
         cout << "1. Rezolva problema Turnurilor din Hanoi\n";
