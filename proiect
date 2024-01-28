@@ -1,15 +1,30 @@
+#include <iostream>
 #include <stdio.h>
 using namespace std;
-void hanoi(int n, char A, char C) {
-if (n==1) {
-cout << "Muta discul 1 de la tija "<<A<<" pe tija"
-<<  C <<endl;
-return;
+
+
+void hanoi(int n, char A, char B, char C) {
+    if (n == 1) {
+        std::cout << "Muta discul 1 de la tija " << A << " pe tija " << C << std::endl;
+        return;
+    }
+    hanoi(n - 1, A, C, B);
+    std::cout << "Muta discul " << n << " de pe tija " << A << " pe tija " << C << std::endl;
+    hanoi(n - 1, B, A, C);
 }
-hanoi(n-1, A, C, B);
-cout<< "Muta discul " << n << " de pe tija " << A << " pe tija " << C << endl;
-hanoi(n-1, B, A, C);
+
+int main() {
+    int n;
+    char tijaA = 'A', tijaB = 'B', tijaC = 'C';
+
+    std::cout << "Introduceti numarul de discuri: ";
+    std::cin >> n;
+
+    hanoi(n, tijaA, tijaB, tijaC);
+
+    return 0;
 }
+
 int main() {
     int n = 3;
 int choice;//meniu
