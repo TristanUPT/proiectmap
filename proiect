@@ -8,7 +8,7 @@ using namespace std;
 void displayTowers() {
     cout << "-----------------------------------------------------\n";
     for (int i = rods.size() - 1; i >= 0; --i) {
-        cout << "Rod " << (char)('A' + i) << ": ";
+        cout << "Rod" << (char)('A' + i) << ": ";
         stack<int> temp = rods[i];
         while (!temp.empty()) {
             cout << temp.top() << " ";
@@ -18,7 +18,21 @@ void displayTowers() {
     }
     cout << "-----------------------------------------------------\n";
     usleep(100000); 
+
 }
+void towerOfHanoi(int n, int source, int auxiliary, int destination) {
+    if (n > 0) {
+        towerOfHanoi(n - 1, source, destination, auxiliary);
+        int disk = rods[source].top();
+        rods[source].pop();
+        rods[destination].push(disk);
+        moves++;
+        cout << "Move disk " << disk << " from rod " << (char)('A' + source) << " to rod " << (char)('A' + destination) << endl;
+        displayTowers();
+        towerOfHanoi(n - 1, auxiliary, source, destination);
+    }
+}
+
 int main() {
     int n;
     char tijaA = 'A', tijaB = 'B', tijaC = 'C';
