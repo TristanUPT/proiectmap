@@ -1,49 +1,48 @@
 #include <iostream>
-#include <stdio.h>
+#include <vector>
+#include <stack>
+#include <unistd.h>
+
 using namespace std;
 
-
-void hanoi(int n, char A, char B, char C) {
-    if (n == 1) {
-        std::cout << "Muta discul 1 de la tija " << A << " pe tija " << C << std::endl;
-        return;
+void displayTowers() {
+    cout << "-----------------------------------------------------\n";
+    for (int i = rods.size() - 1; i >= 0; --i) {
+        cout << "Rod " << (char)('A' + i) << ": ";
+        stack<int> temp = rods[i];
+        while (!temp.empty()) {
+            cout << temp.top() << " ";
+            temp.pop();
+        }
+        cout << endl;
     }
-    hanoi(n - 1, A, C, B);
-    std::cout << "Muta discul " << n << " de pe tija " << A << " pe tija " << C << std::endl;
-    hanoi(n - 1, B, A, C);
+    cout << "-----------------------------------------------------\n";
+    usleep(100000); 
 }
-
 int main() {
     int n;
     char tijaA = 'A', tijaB = 'B', tijaC = 'C';
 
-    std::cout << "Introduceti numarul de discuri: ";
-    std::cin >> n;
-
-    hanoi(n, tijaA, tijaB, tijaC);
-
-    return 0;
-}
-
-int main() {
-    int n = 3;
-int choice;//meniu
-do {
+    int choice; // meniu
+    do {
         cout << "Meniu:\n";
         cout << "1. Rezolva problema Turnurilor din Hanoi\n";
         cout << "0. Iesire\n";
         cout << "Alegeti optiunea: ";
         cin >> choice;
 
-switch (choice){
-case 1:
-cout <<"Introduceti numarul de discuri: ";
-cin >> n;
-    for (int i = 0; i < n; i++) 
-        cout << "Pasul " << i + 1 << ":" << endl;
-        hanoi(i + 1, 'A', 'B', 'C');
-        cout << endl;
-    }
-break;
+        switch (choice) {
+            case 1:
+                cout << "Introduceti numarul de discuri: ";
+                cin >> n;
+                for (int i = 0; i < n; i++) {
+                    cout << "Pasul " << i + 1 << ":" << endl;
+                    hanoi(i + 1, 'A', 'B', 'C');
+                    cout << endl;
+                }
+                break;
+        }
+    } while (choice != 0);
+
     return 0;
 }
