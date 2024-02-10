@@ -62,3 +62,100 @@ int main() {
     int choice;
     cout << "Selecteaza o optiune:";
     cin >> choice;
+    
+    switch (choice) {
+    case 1:
+        cout << "-------------------------------------------------------------------------------------------------\n";
+        cout << "                                           Reguli\n";
+        cout << "-------------------------------------------------------------------------------------------------\n";
+        cout << "Misiunea este sa mutati toate discurile pe a treia tija fara a încalca secventa de aranjament.\n";
+        cout << "1. Un singur disc poate fi mutat între tije în orice moment." << "\n";
+        cout << "2. Doar discul \"de sus\" poate fi îndepartat." << "\n";
+        cout << "3. Niciun disc mare nu poate sta pe un disc mai mic." << "\n";
+        cout << "-------------------------------------------------------------------------------------------------\n";
+        break;
+
+    case 2: {
+        int option;
+        cout << "Selectati optiunea:\n";
+        cout << "1. Dificultate predefinita\n";
+        cout << "2. Numar personalizat de discuri\n";
+        cout << "Alegeti optiunea: ";
+        cin >> option;
+
+        int disks;
+        switch (option) {
+        case 1: {
+            int difficulty;
+            cout << "Selectati nivelul de dificultate:\n";
+            cout << "1. Usor (3 discuri)\n";
+            cout << "2. Normal (5 discuri)\n";
+            cout << "3. Greu (8 discuri)\n";
+            cout << "Alegeti nivelul de dificultate: ";
+            cin >> difficulty;
+
+            switch (difficulty) {
+            case 1:
+                disks = 3;
+                break;
+            case 2:
+                disks = 5;
+                break;
+            case 3:
+                disks = 8;
+                break;
+            default:
+                cout << "Optiune invalida. Iesire...\n";
+                return 1;
+            }
+            break;
+        }
+        case 2:
+            cout << "Introduceti numarul de discuri: ";
+            cin >> disks;
+            if (disks <= 0) {
+                cout << "Numarul de discuri trebuie sa fie pozitiv.\n";
+                return 1;
+            }
+            break;
+        default:
+            cout << "Optiune invalida. Iesire...\n";
+            return 1;
+        }
+
+        for (int i = disks; i > 0; --i) {
+            rods[0].push(i);
+        }
+        displayTowers();
+
+        while (rods[2].size() != static_cast<size_t>(disks)) {
+            int from, to;
+            cout << "Introdu tija sursa si tija destinatie: ";
+            cin >> from >> to;
+
+            if (from < 1 || from > 3 || to < 1 || to > 3) {
+                cout << "Tija selectata nu exista, încercati din nou.\n";
+                continue;
+            }
+
+            --from;
+            --to;
+
+            if (!rods[from].empty() && (rods[to].empty() || rods[from].top() < rods[to].top())) {
+                int disk = rods[from].top();
+                rods[from].pop();
+                rods[to].push(disk);
+                moves++;
+                displayTowers();
+
+                if (rods[2].size() == static_cast<size_t>(disks)) {
+                    cout << "Felicitari, ati câstigat!!!\n";
+                    cout << "Ati terminat jocul în " << moves << " mutari.\n";
+                }
+            }
+            else {
+                cout << "Mutare invalida, discurile nu pot fi plasate pe discuri mai mici.\n";
+            }
+        }
+        break;
+    }
