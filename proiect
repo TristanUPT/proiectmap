@@ -1,14 +1,19 @@
 #include <iostream>
 #include <vector>
 #include <stack>
+#ifdef _WIN32
+#include <windows.h>
+#else
 #include <unistd.h>
+#endif
+
 
 using namespace std;
 
 void displayTowers() {
     cout << "-----------------------------------------------------\n";
     for (int i = rods.size() - 1; i >= 0; --i) {
-        cout << "Rod" << (char)('A' + i) << ": ";
+        cout << "Tija " << (char)('A' + i) << ": ";
         stack<int> temp = rods[i];
         while (!temp.empty()) {
             cout << temp.top() << " ";
@@ -17,9 +22,15 @@ void displayTowers() {
         cout << endl;
     }
     cout << "-----------------------------------------------------\n";
+  #ifdef _WIN32
+    Sleep(100); 
+#else
     usleep(100000); 
+#endif
 
 }
+}
+
 void towerOfHanoi(int n, int source, int auxiliary, int destination) {
     if (n > 0) {
         towerOfHanoi(n - 1, source, destination, auxiliary);
@@ -27,36 +38,27 @@ void towerOfHanoi(int n, int source, int auxiliary, int destination) {
         rods[source].pop();
         rods[destination].push(disk);
         moves++;
-        cout << "Move disk " << disk << " from rod " << (char)('A' + source) << " to rod " << (char)('A' + destination) << endl;
+        cout << "Muta discul " << disk << " din tija " << (char)('A' + source) << " la tija " << (char)('A' + destination) << endl;
         displayTowers();
         towerOfHanoi(n - 1, auxiliary, source, destination);
     }
 }
 
-int main() {
-    int n;
-    char tijaA = 'A', tijaB = 'B', tijaC = 'C';
-
-    int choice; // meniu
-    do {
-        cout << "Meniu:\n";
-        cout << "1. Rezolva problema Turnurilor din Hanoi\n";
-        cout << "0. Iesire\n";
-        cout << "Alegeti optiunea: ";
-        cin >> choice;
-
-        switch (choice) {
-            case 1:
-                cout << "Introduceti numarul de discuri: ";
-                cin >> n;
-                for (int i = 0; i < n; i++) {
-                    cout << "Pasul " << i + 1 << ":" << endl;
-                    hanoi(i + 1, 'A', 'B', 'C');
-                    cout << endl;
-                }
-                break;
-        }
-    } while (choice != 0);
-
-    return 0;
+void automatedGame(int n) {
+    cout << "Turnul din Hanoi pentru " << n << " discuri:\n";
+    for (int i = n; i > 0; --i) {
+        rods[0].push(i);
+    }
+    displayTowers();
+    towerOfHanoi(n, 0, 1, 2);
 }
+
+int main() {
+    cout << "Turnul din Hanoi minigame\n";
+    cout << "1. Regulile jocului.\n";
+    cout << "2. Joaca singur\n";
+    cout << "3. Lasa minigame-ul sa joace pentru tine\n";
+
+    int choice;
+    cout << "Selecteaza o optiune:";
+    cin >> choice;
