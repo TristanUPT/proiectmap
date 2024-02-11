@@ -10,6 +10,9 @@
 
 using namespace std;
 
+vector<stack<int>> rods(3);
+int moves = 0;
+
 void displayTowers() {
     cout << "-----------------------------------------------------\n";
     for (int i = rods.size() - 1; i >= 0; --i) {
@@ -22,13 +25,12 @@ void displayTowers() {
         cout << endl;
     }
     cout << "-----------------------------------------------------\n";
-  #ifdef _WIN32
+#ifdef _WIN32
     Sleep(100); 
 #else
     usleep(100000); 
 #endif
 
-}
 }
 
 void towerOfHanoi(int n, int source, int auxiliary, int destination) {
@@ -62,7 +64,7 @@ int main() {
     int choice;
     cout << "Selecteaza o optiune:";
     cin >> choice;
-    
+
     switch (choice) {
     case 1:
         cout << "-------------------------------------------------------------------------------------------------\n";
@@ -159,3 +161,64 @@ int main() {
         }
         break;
     }
+
+    case 3: {
+        int option;
+        cout << "Selectati optiunea:\n";
+        cout << "1. Dificultate predefinita\n";
+        cout << "2. Numar personalizat de discuri\n";
+        cout << "Alegeti optiunea: ";
+        cin >> option;
+
+        int disks;
+        switch (option) {
+        case 1: {
+            int difficulty;
+            cout << "Selectati nivelul de dificultate:\n";
+            cout << "1. Usor (3 discuri)\n";
+            cout << "2. Normal (5 discuri)\n";
+            cout << "3. Greu (8 discuri)\n";
+            cout << "Alegeti nivelul de dificultate: ";
+            cin >> difficulty;
+
+            switch (difficulty) {
+            case 1:
+                disks = 3;
+                break;
+            case 2:
+                disks = 5;
+                break;
+            case 3:
+                disks = 8;
+                break;
+            default:
+                cout << "Optiune invalida. Iesire...\n";
+                return 1;
+            }
+            break;
+        }
+        case 2:
+            cout << "Introduceti numarul de discuri: ";
+            cin >> disks;
+            if (disks <= 0) {
+                cout << "Numarul de discuri trebuie sa fie pozitiv.\n";
+                return 1;
+            }
+            break;
+        default:
+            cout << "Optiune invalida. Iesire...\n";
+            return 1;
+        }
+
+        automatedGame(disks);
+        cout << "Jocul a luat sfârsit în " << moves << " mutari.\n";
+        break;
+    }
+
+    default:
+        cout << "Optiune invalida, iesire...\n";
+        return 1;
+    }
+
+    return 0;
+}
