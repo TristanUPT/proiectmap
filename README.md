@@ -31,6 +31,26 @@ Inițializează și gestionează jocul automatizat pentru un număr specific de 
 `Opțiunea 3 permite utilizatorului să observe cum jocul se desfășoară automat, alegând nivelul de dificultate sau numărul de discuri.`
 #### Interacțiune cu Utilizatorul:
 `Se folosesc instrucțiuni cout și cin pentru a comunica cu utilizatorul, precum și pentru a colecta date de intrare.`
+
+
+## Utilizarea programului cu Docker
+### Construirea și rularea într-un container Docker
+- Construim imaginea docker:
+```docker -build -t tristancv123/proiectmap .```
+- Autentificarea in docker hub:
+```docker login```
+- Rularea in container Docker:
+```docker run -it --rm tristancv123/proiectmap```
+
+#### Conținutul Dockerfile
+```plaintext
+FROM gcc:latest
+WORKDIR /app
+COPY . /app
+RUN gcc -o myapp Proiect.cpp -lstdc++
+CMD ["./myapp"]
+```
+
 # Concluzie:
 `Codul oferă o implementare funcțională și interactivă a jocului Turnul din Hanoi, permițând utilizatorului să experimenteze jocul manual sau să observe desfășurarea automată a acestuia.`
 
