@@ -1,11 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <stack>
-#ifdef _WIN32
 #include <windows.h>
-#else
-#include <unistd.h>
-#endif
+
 
 
 using namespace std;
@@ -25,11 +22,9 @@ void displayTowers() {
         cout << endl;
     }
     cout << "-----------------------------------------------------\n";
-#ifdef _WIN32
+
     Sleep(100); 
-#else
-    usleep(100000); 
-#endif
+
 
 }
 
@@ -136,7 +131,7 @@ int main() {
             cin >> from >> to;
 
             if (from < 1 || from > 3 || to < 1 || to > 3) {
-                cout << "Tija selectata nu exista, încercati din nou.\n";
+                cout << "Tija selectata nu exista, incercati din nou.\n";
                 continue;
             }
 
@@ -151,7 +146,7 @@ int main() {
                 displayTowers();
 
                 if (rods[2].size() == static_cast<size_t>(disks)) {
-                    cout << "Felicitari, ati câstigat!!!\n";
+                    cout << "Felicitari, ati castigat!!!\n";
                     cout << "Ati terminat jocul în " << moves << " mutari.\n";
                 }
             }
@@ -211,7 +206,7 @@ int main() {
         }
 
         automatedGame(disks);
-        cout << "Jocul a luat sfârsit în " << moves << " mutari.\n";
+        cout << "Jocul a luat sfarsit in " << moves << " mutari.\n";
         break;
     }
 
