@@ -30,7 +30,77 @@ Inițializează și gestionează jocul automatizat pentru un număr specific de 
 #### Joc Automatizat:
 `Opțiunea 3 permite utilizatorului să observe cum jocul se desfășoară automat, alegând nivelul de dificultate sau numărul de discuri.`
 #### Interacțiune cu Utilizatorul:
-`Se folosesc instrucțiuni cout și cin pentru a comunica cu utilizatorul, precum și pentru a colecta date de intrare.`
+Se folosesc instrucțiuni `cout` și `cin` pentru a comunica cu utilizatorul, precum și pentru a colecta date de intrare.
+## Exemplu de Utilizare:
+```plaintext
+Turnul din Hanoi minigame
+1. Regulile jocului.
+2. Joaca singur
+3. Lasa minigame-ul sa joace pentru tine
+Selecteaza o optiune:3
+
+Selectati optiunea:
+1. Dificultate predefinita
+2. Numar personalizat de discuri
+Alegeti optiunea:1
+
+Selectati nivelul de dificultate:
+1. Usor (3 discuri)
+2. Normal (5 discuri)
+3. Greu (8 discuri)
+Alegeti nivelul de dificultate: 1
+
+Turnul din Hanoi pentru 3 discuri:
+-----------------------------------------------------
+Tija C:
+Tija B:
+Tija A: 1 2 3
+-----------------------------------------------------
+Muta discul 1 din tija A la tija C
+-----------------------------------------------------
+Tija C: 1
+Tija B:
+Tija A: 2 3
+-----------------------------------------------------
+Muta discul 2 din tija A la tija B
+-----------------------------------------------------
+Tija C: 1
+Tija B: 2
+Tija A: 3
+-----------------------------------------------------
+Muta discul 1 din tija C la tija B
+-----------------------------------------------------
+Tija C:
+Tija B: 1 2
+Tija A: 3
+-----------------------------------------------------
+Muta discul 3 din tija A la tija C
+-----------------------------------------------------
+Tija C: 3
+Tija B: 1 2
+Tija A:
+-----------------------------------------------------
+Muta discul 1 din tija B la tija A
+-----------------------------------------------------
+Tija C: 3
+Tija B: 2
+Tija A: 1
+-----------------------------------------------------
+Muta discul 2 din tija B la tija C
+-----------------------------------------------------
+Tija C: 2 3
+Tija B:
+Tija A: 1
+-----------------------------------------------------
+Muta discul 1 din tija A la tija C
+-----------------------------------------------------
+Tija C: 1 2 3
+Tija B:
+Tija A:
+-----------------------------------------------------
+Jocul a luat sfarsit in 7 mutari.
+```
+
 
 
 ## Utilizarea programului cu Docker
