@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <stack>
-#include <windows.h>
+
 
 
 
@@ -23,7 +23,7 @@ void displayTowers() {
     }
     cout << "-----------------------------------------------------\n";
 
-    Sleep(100); 
+  
 
 
 }
