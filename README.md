@@ -5,7 +5,7 @@ Se dau trei tije A, B, C și N discuri de diametre diferite, stivuite inițial p
 - la fiecare mișcare se va muta un singur disc
 - un disc se poate plasa doar asupra unui disc mai mare ca diametru.
   ## Structura Codului:
-  ####Variabile Globale:
+  #### Variabile Globale:
   -`vector<stack<int>> rods(3);`
   -`int moves = 0;`
   `rods`: Un vector de stive reprezentând cele trei tije ale Turnului din Hanoi.
